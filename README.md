@@ -1,12 +1,12 @@
 # Stadspoorten van Maastricht
 
-A drag-and-drop museum game about the seven historic city gates of Maastricht, played on an 1840–1845 cadastral map.
+Een sleep-en-neerzet-museumspel over de zeven historische stadspoorten van Maastricht, gespeeld op een kadasterkaart uit 1840–1845.
 
-## Try it out
+## Probeer het uit
 
-[**Play in your browser →**](https://jackey1947.github.io/museum-spellen-poorten/)
+[**Speel in je browser →**](https://jackey1947.github.io/museum-spellen-poorten/)
 
-## How to play
+## Hoe te spelen
 
 Sleep elke poortnaam uit de zijbalk naar de juiste pulserende rode stip op de kaart. Vind alle zeven poorten:
 
@@ -18,6 +18,6 @@ Sleep elke poortnaam uit de zijbalk naar de juiste pulserende rode stip op de ka
 - Hoogbruggepoort
 - Helpoort
 
-## About
+## Over
 
-The whole game is a single self-contained `index.html` file — no build step, no external assets beyond Google Fonts. The historic map is embedded as a base64 image so the page works offline too.
+Het hele spel zit in één zelfstandig `index.html`-bestand — geen buildstap, geen externe bronnen behalve Google Fonts. De historische kaart is ingesloten als base64-afbeelding, zodat de pagina ook offline werkt.
