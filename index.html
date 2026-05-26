@@ -54,11 +54,13 @@ html,body{  margin:0;
 #content{display:flex;flex:1;min-height:0;}
 
 /* GATE PANEL */
-#gate-panel{width:130px;min-width:130px;flex-shrink:0;background:#1c1008;border-right:3px solid #8b6914;display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;}
+#gate-panel{width:165px;min-width:165px;flex-shrink:0;background:#1c1008;border-right:3px solid #8b6914;display:flex;flex-direction:column;overflow-y:auto;overflow-x:hidden;}
 #gate-panel-header{font-family:'Cinzel',serif;font-size:10px;color:#a07848;text-align:center;padding:10px 4px 6px;letter-spacing:1px;border-bottom:1px solid #4a2e10;flex-shrink:0;}
-.gate-found{display:flex;flex-direction:column;align-items:center;padding:8px 6px;border-bottom:1px solid #2a1a08;animation:gateFadeIn 0.4s ease;}
-.gate-found img{width:88px;height:88px;object-fit:contain;}
-.gate-found-name{font-family:'Cinzel',serif;font-size:9px;color:#c9a86c;text-align:center;margin-top:4px;line-height:1.3;}
+.gate-found{display:flex;flex-direction:column;align-items:center;padding:10px 8px;border-bottom:1px solid #2a1a08;animation:gateFadeIn 0.4s ease;}
+.gate-found img{width:130px;height:130px;object-fit:contain;}
+.gate-found-name{font-family:'Cinzel',serif;font-size:10px;font-weight:700;color:#c9a86c;text-align:center;margin-top:6px;line-height:1.3;}
+.gate-found-wall{font-family:'IM Fell English',serif;font-size:10px;color:#a07848;text-align:center;margin-top:2px;font-style:italic;}
+.gate-found-demo{font-family:'IM Fell English',serif;font-size:10px;color:#a07848;text-align:center;margin-top:1px;font-style:italic;}
 @keyframes gateFadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 
 /* MAP */
@@ -145,11 +147,12 @@ html,body{  margin:0;
         border-right:none;
         order:-1;
     }
-    #gate-panel{width:100%;min-width:0;flex-direction:row;overflow-x:auto;overflow-y:hidden;border-right:none;border-top:3px solid #8b6914;max-height:110px;order:1;}
+    #gate-panel{width:100%;min-width:0;flex-direction:row;overflow-x:auto;overflow-y:hidden;border-right:none;border-top:3px solid #8b6914;max-height:130px;order:1;}
     #gate-panel-header{display:none;}
-    .gate-found{flex-direction:column;padding:6px 8px;border-bottom:none;border-right:1px solid #2a1a08;min-width:80px;}
-    .gate-found img{width:56px;height:56px;}
+    .gate-found{flex-direction:column;padding:6px 8px;border-bottom:none;border-right:1px solid #2a1a08;min-width:90px;}
+    .gate-found img{width:60px;height:60px;}
     .gate-found-name{font-size:8px;}
+    .gate-found-wall,.gate-found-demo{font-size:7.5px;}
 
     #topbar {
         height:auto;
@@ -224,13 +227,13 @@ html,body{  margin:0;
 
 <script>
 var gates=[
-  {id:"bosch", name:"Boschpoort", hint:"Noordkant — blauwe lijn, bovenzijde stad", num:1, svg:"1_boschpoort.svg"},
-  {id:"brussel", name:"Brusselsepoort", hint:"Westkant — groene lijn, linkerzijde stad", num:2, svg:"2_brusselse%20poort.svg"},
-  {id:"tongers", name:"Tongersepoort", hint:"Zuidwest — blauwe lijn, onderzijde stad", num:3, svg:"3_tongersepoort.svg"},
-  {id:"pieters", name:"Sint-Pieterspoort", hint:"Zuid — blauwe lijn, onderzijde stad", num:4, svg:"4_pieterspoort.svg"},
-  {id:"smaarten", name:"Sint Maartenspoort", hint:"Wyck — noordkant, aan de overkant van de Maas", num:5, svg:"5_maartenspoort.svg"},
-  {id:"hoogbrugge", name:"Hoogbruggepoort", hint:"Wyck — oostkant, bij de hoge brug", num:6, svg:"6_Duitsepoort_Hoogbruggepoort.svg"},
-  {id:"hel", name:"Helpoort", hint:"Zuid - blauwe lijn, onderzijde stad", num:7, svg:"7_helpoort.svg"},
+  {id:"bosch", name:"Boschpoort", hint:"Noordkant — blauwe lijn, bovenzijde stad", num:1, svg:"1_boschpoort.svg", wall:"2e omwalling", demolished:"Gesloopt in 1870"},
+  {id:"brussel", name:"Brusselsepoort", hint:"Westkant — groene lijn, linkerzijde stad", num:2, svg:"2_brusselse%20poort.svg", wall:"2e omwalling", demolished:"Gesloopt in 1868"},
+  {id:"tongers", name:"Tongersepoort", hint:"Zuidwest — blauwe lijn, onderzijde stad", num:3, svg:"3_tongersepoort.svg", wall:"2e omwalling", demolished:"Gesloopt in 1867"},
+  {id:"pieters", name:"Sint-Pieterspoort", hint:"Zuid — blauwe lijn, onderzijde stad", num:4, svg:"4_pieterspoort.svg", wall:"2e omwalling", demolished:"Gesloopt in 1869"},
+  {id:"smaarten", name:"Sint Maartenspoort", hint:"Wyck — noordkant, aan de overkant van de Maas", num:5, svg:"5_maartenspoort.svg", wall:"2e omwalling", demolished:"Gesloopt in 1868"},
+  {id:"hoogbrugge", name:"Hoogbruggepoort", hint:"Wyck — oostkant, bij de hoge brug", num:6, svg:"6_Duitsepoort_Hoogbruggepoort.svg", wall:"2e omwalling", demolished:"Gesloopt in 1869"},
+  {id:"hel", name:"Helpoort", hint:"Zuid - blauwe lijn, onderzijde stad", num:7, svg:"7_helpoort.svg", wall:"1e omwalling", demolished:"Enige bewaarde poort"},
 ];
 var correct=0,attempts=0,dragId=null;
 
@@ -269,7 +272,7 @@ function check(dz,gid){
     var panel=document.getElementById('gate-panel');
     var item=document.createElement('div');
     item.className='gate-found';
-    item.innerHTML='<img src="'+g.svg+'" alt="'+g.name+'"><div class="gate-found-name">'+g.name+'</div>';
+    item.innerHTML='<img src="'+g.svg+'" alt="'+g.name+'"><div class="gate-found-name">'+g.name+'</div><div class="gate-found-wall">'+g.wall+'</div><div class="gate-found-demo">'+g.demolished+'</div>';
     panel.appendChild(item);
     msg.className='good';
     if(correct===7){
